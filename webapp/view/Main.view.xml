@@ -69,7 +69,7 @@
                             icon="sap-icon://add"
                             text="{i18n>btn.create}"
                             type="Emphasized"
-                            press="onPressOpenCreate"
+                            press="onPressOpenCreateLeague"
                         />
                         <Button
                             id="idBtnEdit"

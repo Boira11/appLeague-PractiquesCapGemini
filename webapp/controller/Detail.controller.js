@@ -69,7 +69,12 @@ sap.ui.define([
                     oObject = oView.getModel().getObject(sPath);
     
                 this.oSemanticObject = oObject.type;              
-            }
+            },
+
+            onCloseDetailPress: function () {
+                this.getView().getModel("appView").setProperty("/layout", "OneColumn"); 
+                this.getOwnerComponent().getRouter().navTo("RouteMain");
+            },
 
     
 

@@ -30,5 +30,38 @@ sap.ui.define([
 
                 this.byId("idTableMain").removeSelections();
             },
+
+            onPressOpenCreateLeague: function(){
+
+                var oView = this.getView();
+                var oModel = this.getView().getModel();
+
+
+                // create value help dialog
+
+                if(!this._dialogCreateLeagues){
+                    this._dialogCreateLeagues = Fragment.load({
+                        id: oView.getId(),
+                        name: "appleagues.view.fragments.CreateLeague",
+                        controller: this
+                    },
+
+                    ).then(function(oCreateDialog){
+                        oView.addDependent(oCreateDialog); // El addDependent es como unir el dialogo a su Vista ( siempre hay que hacerlo) al crear el fragmento
+                        return oCreateDialog;
+
+                    });
+                }
+                
+
+                //open value help dialog
+                this._dialogCreateLeagues.then(function(oCreateDialog){
+                    oCreateDialog.open();
+                })
+
+                
+
+            },
+
         });
     });

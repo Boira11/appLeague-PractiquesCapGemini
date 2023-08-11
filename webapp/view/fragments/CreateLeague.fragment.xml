@@ -1,0 +1,93 @@
+
+<!-- ##### ELS FRAGMENTS ENS SERVEIX EN AQUEST EXEMPLE PER CREAR COM COMPONENTS, EN AQUEST CAS UNIVERSITATS#### -->
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    
+    
+    <Dialog id="idDialog"
+        draggable="true"
+        stretch="{device/system/phone}"
+        showHeader="true"
+        title="{i18n>dialog.title.createLeague}">
+
+
+        
+        <VBox 
+            id="idVBox" 
+            class="sapUiSmallMargin">
+        <core:ExtensionPoint 
+            name="LeagueList" />
+		<f:SimpleForm 
+            id="SimpleForm"
+    		editable="true"
+			layout="ColumnLayout" 
+			title="Title form"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+                <core:Title id="idCoreTitle" text="{i18n>fragmentCreateLeague.Title}"/>
+
+<!-- ######################### ESTRUCTURA PER LA CREACIO ######################################################### -->
+
+				<Label id="idLabelName" text="{i18n>create.league.name}" />
+				<Input id="idCreateLeague.Name" type="Text" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateLeague.name" cellsSmall="2" cellsLarge="2"/>
+                    </layoutData>
+                </Input>          
+				<Label id="idLabelCountry" text="{i18n>create.league.country}" />
+				<Input id="idCreateLeague.Country" type="Text" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateLeague.country" cellsSmall="2" cellsLarge="2"/>
+                    </layoutData>
+                </Input>
+
+                <Label id="idLabelLevel" text="{i18n>create.league.level}" />
+				<Input id="idCreateLeague.Level" type="Number" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateLeague.level" cellsSmall="1" cellsLarge="1"/>
+                    </layoutData>
+                </Input>
+
+                <Label id="idLabelFoundation" text="{i18n>create.league.foundation}" />
+				<Input id="idCreateLeague.Foundation" type="Text" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateLeague.foundation" cellsSmall="2" cellsLarge="2"/>
+                    </layoutData>
+                </Input>
+
+                <Label id="idLabelPresident" text="{i18n>create.league.president}" />
+				<Input id="idCreateLeague.President" type="Text" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateLeague.president" cellsSmall="2" cellsLarge="2"/>
+                    </layoutData>
+                </Input>
+
+			</f:content>
+		</f:SimpleForm>
+        
+	</VBox>
+        
+        <buttons>
+            <!-- Botones del diálogo  -->
+            <Button id="idButtonCreateLeague" text="{i18n>btn.create}" press="onPressCreateLeague"/>
+            <Button id="idButtonCloseDialogCreateLeague" text="{i18n>btn.close}" press="onCloseDialog"/>
+        </buttons>
+        
+    </Dialog>
+    
+</core:FragmentDefinition>
