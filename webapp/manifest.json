@@ -82,22 +82,34 @@
         }
       ]
     },
+    "config": {
+      "fullWidth":true,
+      "serviceConfig":{}
+    },
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
         "viewPath": "appleagues.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "layout",
         "clearControlAggregation": false
       },
       "routes": [
         {
           "name": "RouteMain",
-          "pattern": ":?query:",
+          "pattern": "",
           "target": [
             "TargetMain"
+          ]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "league({league})",
+          "target": [
+            "TargetMain",
+            "TargetDetail"
           ]
         }
       ],
@@ -107,8 +119,16 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Main",
-          "viewName": "Main"
+          "viewName": "Main",
+          "controlAggregation": "beginColumnPages"
+        },
+        "TargetDetail": {
+          "viewName":"Detail",
+          "viewLevel": 1,
+          "viewId": "detail",
+          "controlAggregation": "midColumnPages"
         }
+
       }
     },
     "rootView": {

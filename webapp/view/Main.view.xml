@@ -1,7 +1,152 @@
-<mvc:View controllerName="appleagues.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+<mvc:View
+    controllerName="appleagues.controller.Main"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <VBox
+            fitContainer="true"
+            id="1.0"
+        >
+            <smartFilterBar:SmartFilterBar
+                id="smartFilterBar"
+                entitySet="Leagues"
+                persistencyKey="SmartFilter_Explored"
+                enableBasicSearch="false"
+            >
+                <smartFilterBar:controlConfiguration>
+                    <!-- ******************* FILTROS *********************************** -->
+
+                    <smartFilterBar:ControlConfiguration
+                        id="iID"
+                        key="country"
+                        index="0"
+                        groupId="_BASIC"
+                        label="{i18n>filter.country}"
+                        visibleInAdvancedArea="true"
+                        preventInitialDataFetchInValueHelpDialog="false"
+                        hasValueHelpDialog="false"
+                        mandatory="notMandatory"
+                    />
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+
+            <smartTable:SmartTable
+                id="LineItemsSmartTable"
+                entitySet="Leagues"
+                smartFilterId="smartFilterBar"
+                tableType="ResponsiveTable"
+                enableExport="true"
+                beforeExport="onBeforeExport"
+                useVariantManagement="true"
+                useTablePersonalisation="true"
+                header="{i18n>table.main.title}"
+                showRowCount="true"
+                persistencyKey="SmartTableAnalytical_Explored"
+                enableAutoBinding="true"
+                class="sapUiResponsiveContentPadding"
+                enableAutoColumnWidth="true"
+                beforeRebindTable="onBeforeRebindTable"
+                requestAtLeastFields="name,country,level"
+            >
+                <smartTable:customToolbar>
+                    <Toolbar
+                        id="_IDGenToolbar1.1"
+                        class="AdminToolbar"
+                    >
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+
+                        <!-- ##### BUTTONS ##### -->
+                        <Button
+                            id="idCreateUni"
+                            icon="sap-icon://add"
+                            text="{i18n>btn.create}"
+                            type="Emphasized"
+                            press="onPressOpenCreate"
+                        />
+                        <Button
+                            id="idBtnEdit"
+                            icon="sap-icon://edit"
+                            text="{i18n>btn.edit}"
+                            type="Transparent"
+                            press="onPressEdit"
+                        />
+                    </Toolbar>
+                </smartTable:customToolbar>
+
+                <!-- layout data used to make the table growing but the filter bar fixed -->
+                <smartTable:layoutData>
+                    <FlexItemData
+                        growFactor="1"
+                        baseSize="0%"
+                        id="1.4"
+                    />
+                </smartTable:layoutData>
+
+                <!-- Table structure ##################### DENTRO DE LA SMART TABLE ############-->
+                <Table
+                    id="idTableMain"
+                    mode="SingleSelectMaster"
+                    growing="true"
+                    growingThreshold="20"
+                    growingScrollToLoad="true"
+                    selectionChange="onPressObject"
+                >
+                    <headerToolbar>
+                        <Toolbar id="_IDGenToolbar12">
+                            <Title
+                                id="_IDGenTitle12"
+                                text="{i18n>table.main.title}"
+                            />
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column id="_IDGenColumn12">
+                            <Text
+                                id="_IDGenText12"
+                                text="{i18n>table.column.name}"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn22">
+                            <Text
+                                id="_IDGenText22"
+                                text="{i18n>table.column.country}"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn321">
+                            <Text
+                                id="_IDGenText321"
+                                text="{i18n>table.column.level}"
+                            />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem1">
+                            <cells>
+                                <ObjectIdentifier
+                                    id="_IDGenObjectIdentifier12"
+                                    title="{name}"
+                                />
+                                <Text
+                                    id="_IDGenText42"
+                                    text="{country}"
+                                />
+                                <Text
+                                    id="_IDGenText52"
+                                    text="{level}"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </VBox>
     </Page>
 </mvc:View>
