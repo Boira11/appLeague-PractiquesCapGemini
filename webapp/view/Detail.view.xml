@@ -62,7 +62,9 @@
                 id="idFlexbox"
                 wrap="Wrap"
                 fitContainer="true"
-                alignItems="Stretch">
+                alignItems="Stretch"
+                alignContent="End">
+            
                 <m:Avatar
                     id="_IDGenAvatar2"
                     src="sap-icon://study-leave"
@@ -91,6 +93,44 @@
                         id="idCountryLeague"
                         text="{country}"/>
                 </m:VBox>
+
+                <m:VBox
+                    id="idVBox3"
+                    justifyContent="Center"
+                    class="sapUiSmallMarginEnd">
+                    <m:Label
+                        id="idLabelVBox3"
+                        text="{i18n>label.levelLeague}"/>
+                    <m:Text
+                        id="idLevelLeague"
+                        text="{level}"
+                        />
+                </m:VBox>
+
+                <m:VBox
+                    id="idVBox4"
+                    justifyContent="Center"
+                    class="sapUiSmallMarginEnd">
+                    <m:Label
+                        id="idLabelVBox4"
+                        text="{i18n>label.foundationLeague}"/>
+                    <m:Text
+                        id="idFoundationLeague"
+                        text="{foundation}"/>
+                </m:VBox>
+
+                <m:VBox
+                    id="idVBox5"
+                    justifyContent="Center"
+                    class="sapUiSmallMarginEnd">
+                    <m:Label
+                        id="idLabelVBox5"
+                        text="{i18n>label.presidentLeague}"/>
+                    <m:Text
+                        id="idPresidentLeague"
+                        text="{president}"/>
+                </m:VBox>
+
             </m:FlexBox>
         </headerContent>
 
@@ -128,7 +168,8 @@
                                                 id="idButtonAddTeam"
                                                 icon="sap-icon://add"
                                                 text="{i18n>btn.create}"
-                                                type="Default"/>
+                                                type="Emphasized"
+                                                press="onPressOpenCreateTeam"/>
                                         </m:Toolbar>
                                     </smartTable:customToolbar>
                                     <m:Table

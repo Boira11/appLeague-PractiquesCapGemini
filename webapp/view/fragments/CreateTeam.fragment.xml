@@ -1,0 +1,78 @@
+
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    
+    
+    <Dialog id="idDialogCreateTeam"
+        draggable="true"
+        stretch="{device/system/phone}"
+        showHeader="true"
+        title="{i18n>dialog.title.createTeam}">
+
+
+        
+        <VBox 
+            id="idVBoxCreateTeam" 
+            class="sapUiSmallMargin">
+        <core:ExtensionPoint 
+            name="TeamsList" />
+		<f:SimpleForm 
+            id="SimpleForm"
+    		editable="true"
+			layout="ColumnLayout" 
+			title="Create a New Team"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+                <core:Title id="idCoreTitle" text="{i18n>fragmentCreateTeam.Title}"/>
+
+<!-- ######################### ESTRUCTURA PER LA CREACIO ######################################################### -->
+
+				<Label id="idLabelName" text="{i18n>create.team.name}" />
+				<Input id="idCreateTeam.name" type="Text" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateTeam.name" cellsSmall="2" cellsLarge="2"/>
+                    </layoutData>
+                </Input>         
+
+				<Label id="idLabelCity" text="{i18n>create.team.city}" />
+				<Input id="idCreateTeam.city" type="Text" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateTeam.city" cellsSmall="2" cellsLarge="2"/>
+                    </layoutData>
+                </Input>
+
+                <Label id="idLabelStadium" text="{i18n>create.league.stadium}" />
+				<Input id="idCreateTeam.stadium" type="Text" required="true" >
+                    <layoutData>
+                        <f:ColumnElementData id="idColumnCreateTeam.stadium" cellsSmall="1" cellsLarge="1"/>
+                    </layoutData>
+                </Input>
+			</f:content>
+		</f:SimpleForm>
+        
+	</VBox>
+        
+        <buttons>
+            <!-- Botones del diálogo  -->
+            <Button id="idButtonCreateTeam" text="{i18n>btn.create}" press="onPressCreateTeam"/>
+            <Button id="idButtonCloseDialogCreateTeam" text="{i18n>btn.close}" press="onCloseDialogCreateTeam"/>
+        </buttons>
+        
+    </Dialog>
+    
+</core:FragmentDefinition>

@@ -1,5 +1,4 @@
 
-<!-- ##### ELS FRAGMENTS ENS SERVEIX EN AQUEST EXEMPLE PER CREAR COM COMPONENTS, EN AQUEST CAS UNIVERSITATS#### -->
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
@@ -24,7 +23,7 @@
             id="SimpleForm"
     		editable="true"
 			layout="ColumnLayout" 
-			title="Title form"
+			title="Create a New league"
 			labelSpanXL="3"
 			labelSpanL="3"
 			labelSpanM="3"
@@ -63,12 +62,14 @@
                     </layoutData>
                 </Input>
 
-                <Label id="idLabelFoundation" text="{i18n>create.league.foundation}" />
-				<Input id="idCreateLeague.Foundation" type="Text" required="true" >
+                <!-- <Label id="idLabelFoundation" text="{i18n>create.league.foundation}" />
+				<Input id="idCreateLeague.Fundation" type="Date" required="false" >
                     <layoutData>
                         <f:ColumnElementData id="idColumnCreateLeague.foundation" cellsSmall="2" cellsLarge="2"/>
                     </layoutData>
-                </Input>
+                </Input> -->
+
+                
 
                 <Label id="idLabelPresident" text="{i18n>create.league.president}" />
 				<Input id="idCreateLeague.President" type="Text" required="true" >
@@ -85,7 +86,7 @@
         <buttons>
             <!-- Botones del diálogo  -->
             <Button id="idButtonCreateLeague" text="{i18n>btn.create}" press="onPressCreateLeague"/>
-            <Button id="idButtonCloseDialogCreateLeague" text="{i18n>btn.close}" press="onCloseDialog"/>
+            <Button id="idButtonCloseDialogCreateLeague" text="{i18n>btn.close}" press="onCloseDialogCreateLeague"/>
         </buttons>
         
     </Dialog>

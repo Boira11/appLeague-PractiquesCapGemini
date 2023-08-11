@@ -63,5 +63,66 @@ sap.ui.define([
 
             },
 
+            onPressCreateLeague: function () {
+
+
+                var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+
+                //Creamos esta variable para tenerla para luego poder acceder al modelo y a la vista a traves del oModel
+                var oModel = this.getView().getModel();
+
+                // Creamos un objeto
+                var oEntry = {};
+
+                // los id los cogemos del input del fragmento
+
+                var sName = this.getView().byId("idCreateLeague.Name").getValue();
+                var sCountry = this.getView().byId("idCreateLeague.Country").getValue();
+                var sLevel = this.getView().byId("idCreateLeague.Level").getValue();
+                var sPresident = this.getView().byId("idCreateLeague.President").getValue();
+
+                //lo que va despues de oEntry. es como lo hemos puesto en el MainView, fijarse bien en esto ya que si no esta igual petara
+                oEntry.name = sName;              
+                oEntry.country = sCountry; 
+                oEntry.level = sLevel; 
+                oEntry.president = sPresident; 
+
+
+                if(sName && sCountry && sLevel){
+                    oModel.create("/Leagues", oEntry, {
+                        succes:function(oData){
+                            oModel.refresh();
+                            
+                            MessageBox.succes(oResourceBundle.getText("message.successCreateUni"));
+                            onCloseDialogCreateLeague();
+                        }.bind(this),
+                        error: function(oError){
+                            MessageBox.error(oResourceBundle.getText("message.errorCreateUni"), {
+                        
+                            });
+                        }
+                    });
+
+                }else{
+                    MessageBox.warning(oResourceBundle.getText("message.fieldsRequired"));
+                }           
+            },
+
+            resetDialog: function () {
+                this.getView().byId("idCreateLeague.Name").setValue("");
+                this.getView().byId("idCreateLeague.Country").setValue("");
+                this.getView().byId("idCreateLeague.Level").setValue("");
+                this.getView().byId("idCreateLeague.President").setValue("");
+            },
+    
+
+            onCloseDialogCreateLeague: function () {
+                this.resetDialog();
+    
+                this._dialogCreateLeagues.then(function(oCreateDialog){
+                    oCreateDialog.close();
+                });
+            },
+
         });
     });
